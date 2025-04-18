@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LogoHelper
   def logo(**options)
     options[:link_to] = root_path unless options.key?(:link_to)

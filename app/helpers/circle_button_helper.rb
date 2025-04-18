@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CircleButtonHelper
   def circle_button(**options)
     content_tag(
