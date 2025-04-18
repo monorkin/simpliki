@@ -72,4 +72,38 @@ html {
     hover:bg-white hover:text-black hover:scale-105
     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white;
   }
+
+  .button--round {
+    @apply rounded-full p-2.5;
+  }
 }
+
+@keyframes slide-to-top-from-out-of-view {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Target the main container */
+#exercises {
+  view-transition-name: exercises;
+}
+
+html[data-turbo-visit-direction="forward"]::view-transition-new(exercises) {
+  animation: 0.25s ease-out slide-to-top-from-out-of-view both;
+}
+
+/* Target the list if you want it to animate separately */
+/* #exercises-list { */
+/*   view-transition-name: exercises-list; */
+/* } */
+/**/
+/* ::view-transition-new(exercises-list) { */
+/*   animation: 0.5s ease-out slide-to-top both; */
+/*   animation-delay: 0.1s; /* Slight delay for staggered effect */ */
+/* } */
