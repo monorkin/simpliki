@@ -1,5 +1,44 @@
 @import "tailwindcss";
 
 html {
-  @apply bg-black text-white;
+  @apply bg-black text-white font-serif;
+}
+
+@layer utilities {
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  .logo {
+    --name: logo;
+
+    @apply py-3 text-6xl flex flex-row justify-center select-none;
+
+    view-transition-name: var(--name, logo);
+
+    .logo__text {
+      @apply font-serif pt-6;
+    }
+
+    .logo__kanji {
+      @apply font-semibold;
+
+      rt {
+        @apply text-gray-400;
+      }
+    }
+  }
+
+  .animated-circle {
+    --name: animated-circle;
+
+    view-transition-name: var(--name, animated-circle);
+  }
 }

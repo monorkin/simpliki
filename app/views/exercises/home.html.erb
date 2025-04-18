@@ -1,10 +1,11 @@
 <div class="h-full flex flex-col justify-center gap-4">
-  <h1 class="text-6xl flex flex-row justify-center select-none">
-    <span class="font-serif pt-6">Simpl</span>
-    <ruby class="font-semibold">息<rt class="text-gray-400">iki</rt></ruby>
-  </h1>
+  <div>
+    <%= logo %>
+  </div>
 
   <div class="flex justify-center">
-    <%= circle_button %>
+    <%= circle_button(class: "relative w-48 h-48 text-white") do %>
+      <%= link_to "Take a breath", exercise_path(@exercise, autostart: true), class: "text-black absolute inset-0 flex justify-center items-center" %>
+    <% end %>
   </div>
 </div>

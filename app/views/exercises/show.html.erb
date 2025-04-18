@@ -1,0 +1,24 @@
+<div id="<%= dom_id(@exercise) %>" class="h-screen overflow-y-scroll overflow-x-hidden snap-y snap-mandatory scrollbar-hidden">
+  <div id="exercise" class="h-[90vh] snap-start snap-always flex flex-col justify-between gap-4">
+    <div>
+      <%= logo %>
+    </div>
+
+    <div class="flex justify-center">
+      <%= circle_button(class: "relative w-48 h-48 text-white") %>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-semibold"><%= @exercise.name %></h2>
+    </div>
+  </div>
+
+  <div id="details" class="relative snap-start mt-6 flex flex-col pb-8">
+    <div class="text-justify">
+      <%= @exercise.description %>
+    </div>
+
+    <!-- A fade that indicates that there is more content beyond the fold -->
+    <div class="fixed h-8 bottom-0 left-0 right-0 bg-linear-to-t from-black to-black/0"></div>
+  </div>
+</div>

@@ -5,5 +5,6 @@ class Exercise::Step < ApplicationRecord
 
   scope :ordered, -> { order(position: :asc, id: :asc) }
 
-  enum :action, %w[ inhale exhale hold ].index_by(&:itself)
+  enum :action, %w[ inhale exhale hold ].index_by(&:itself), default: "inhale"
+  enum :orifice, %w[ mouth nose none ].index_by(&:itself), default: "mouth", prefix: true
 end

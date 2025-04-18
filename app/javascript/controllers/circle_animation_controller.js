@@ -7,7 +7,8 @@ export default class extends Controller {
     radiusPercentage: { type: Number, default: 80 },
     points: { type: Number, default: 16 },
     rippleAmplitude: { type: Number, default: 5 },
-    rippleFrequency: { type: Number, default: 0.5 }
+    rippleFrequency: { type: Number, default: 0.5 },
+    startTime: { type: Number }
   }
 
   connect() {
@@ -59,6 +60,12 @@ export default class extends Controller {
 
   startRippleAnimation() {
     let time = 0
+
+    if (this.startTimeValue) {
+      time = this.startTimeValue
+    } else {
+      time = Number((Math.random() * 3600).toFixed(2))
+    }
 
     const animate = () => {
       time += 0.01

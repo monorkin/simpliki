@@ -1,0 +1,55 @@
+box_breathing:
+  record: box_breathing (Exercise)
+  name: description
+  body: |
+    <p>
+      <b>Box breathing</b> is a simple yet powerful relaxation technique 
+      that involves breathing in a rhythmic pattern of equal counts. 
+    </p>
+    <p>
+      By inhaling deeply for four counts, holding for four counts, 
+      exhaling for four counts, and holding again for four counts, 
+      you create a "box" of four equal sides with your breath. This 
+      practice activates the parasympathetic nervous system, which helps 
+      reduce stress hormones and induces a calming response throughout the 
+      body.
+    </p>
+    <p>
+      The benefits of box breathing extend beyond immediate stress relief. 
+      Regular practice can improve concentration, regulate blood pressure, 
+      enhance emotional regulation, and even boost immune function. Many 
+      high-performing professionals, including military personnel, athletes, 
+      and executives, incorporate box breathing into their daily routines to 
+      maintain composure during high-pressure situations and optimize 
+      decision-making capabilities. It's particularly valuable because it 
+      requires no special equipment and can be practiced discreetly almost 
+      anywhere, making it an accessible tool for managing stress and anxiety 
+      in real-time.
+    </p>
+
+4_7_8_breathing:
+  record: 4_7_8_breathing (Exercise)
+  name: description
+  body: |
+    <p>
+      <b>4-7-8 breathing</b> is a rhythmic breathing technique developed by Dr. Andrew Weil
+      that acts as a natural tranquilizer for the nervous system.
+    </p>
+    <p>
+      The practice involves inhaling quietly through the nose for 4 counts,
+      holding the breath for 7 counts, and exhaling completely through the mouth
+      for 8 counts. This deliberate pattern helps shift the body from a sympathetic
+      (fight-or-flight) state to a parasympathetic (rest-and-digest) state,
+      effectively reducing anxiety and promoting relaxation.
+    </p>
+    <p>
+      Regular practice of 4-7-8 breathing offers numerous benefits including reduced
+      stress and anxiety, improved sleep quality, decreased blood pressure, and enhanced
+      focus. The technique is particularly effective because it can be performed anywhere
+      and requires only a few minutes. Many healthcare professionals recommend this
+      breathing exercise for managing panic attacks, controlling emotional responses,
+      and as a supplementary approach for those dealing with chronic stress conditions.
+      The longer exhalation phase compared to inhalation is especially effective at
+      triggering the relaxation response, making it an excellent tool for quickly
+      achieving a state of calm even in challenging situations.
+    </p>

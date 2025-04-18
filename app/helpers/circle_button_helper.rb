@@ -2,15 +2,19 @@ module CircleButtonHelper
   def circle_button(**options)
     content_tag(
       :div,
-      class: "w-48 h-48 text-white",
+      class: options.fetch(:class, "relative inline-block"),
     ) do
-      animated_circle
+      content_tag(:div, **options.fetch(:container, {}).reverse_merge(class: "absolute inset-0 z-20 flex justify-center")) do
+        yield if block_given?
+      end +
+      animated_circle(**options.fetch(:circle, {}).reverse_merge(class: "absolute inset-0 z-10"))
     end
   end
 
-  def animated_circle
+  def animated_circle(**options)
     content_tag(
       :svg,
+      class: class_names("animated-circle", options[:class]),
       viewBox: "0 0 200 200",
       xmlns: "http://www.w3.org/2000/svg",
       data: { controller: "circle-animation" }

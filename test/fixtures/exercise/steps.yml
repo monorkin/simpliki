@@ -1,41 +1,48 @@
 box_breathing_1:
   exercise: box_breathing
+  orifice: nose
   action: inhale
   position: 1
   duration: 4
 
 box_breathing_2:
   exercise: box_breathing
+  orifice: none
   action: hold
   position: 2
   duration: 4
 
 box_breathing_3:
   exercise: box_breathing
+  orifice: nose
   action: exhale
   position: 3
   duration: 4
 
 box_breathing_4:
   exercise: box_breathing
+  orifice: none
   action: hold
   position: 4
   duration: 4
 
 4_7_8_breathing_1:
   exercise: 4_7_8_breathing
+  orifice: nose
   action: inhale
   position: 1
   duration: 4
 
 4_7_8_breathing_2:
   exercise: 4_7_8_breathing
+  orifice: none
   action: hold
   position: 2
   duration: 7
 
 4_7_8_breathing_3:
   exercise: 4_7_8_breathing
+  orifice: mouth
   action: exhale
   position: 3
   duration: 8
