@@ -9,7 +9,7 @@ class ExercisesController < ApplicationController
 
   def index
     @exercises = Exercise.search(params.dig(:search, :query))
-    set_page_and_extract_portion_from exercises, ordered_by: { name: :desc, id: :desc }
+    set_page_and_extract_portion_from @exercises, ordered_by: { name: :desc, id: :desc }
   end
 
   def show

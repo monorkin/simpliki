@@ -1,7 +1,13 @@
 <div id="<%= dom_id(@exercise) %>" class="h-screen overflow-y-scroll overflow-x-hidden snap-y snap-mandatory scrollbar-hidden">
   <div id="exercise" class="h-[90vh] snap-start snap-always flex flex-col justify-between gap-4">
-    <div>
-      <%= logo %>
+    <div id="navbar" class="navbar">
+      <div class="navbar__item navbar__item--small">
+        <%= link_to "<", :back, class: "button" %>
+      </div>
+      <div class="navbar__item">
+        <%= logo %>
+      </div>
+      <div class="navbar__item navbar__item--small"></div>
     </div>
 
     <div class="flex justify-center">

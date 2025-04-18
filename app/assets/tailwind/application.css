@@ -19,7 +19,7 @@ html {
   .logo {
     --name: logo;
 
-    @apply py-3 text-6xl flex flex-row justify-center select-none;
+    @apply relative py-3 text-6xl flex flex-row justify-center select-none;
 
     view-transition-name: var(--name, logo);
 
@@ -34,11 +34,42 @@ html {
         @apply text-gray-400;
       }
     }
+
+    .logo__link {
+      @apply absolute inset-0;
+    }
   }
 
   .animated-circle {
     --name: animated-circle;
 
     view-transition-name: var(--name, animated-circle);
+  }
+
+  .navbar {
+    --name: navbar;
+
+    @apply flex flex-row items-center justify-between px-4 py-2 bg-black text-white;
+
+    view-transition-name: var(--name, navbar);
+
+    .navbar__item {
+      @apply text-white font-semibold text-lg;
+    }
+
+    .navbar__item.navbar__item--small {
+      @apply w-6 h-6;
+    }
+  }
+
+  .button {
+    @apply inline-flex flex-row items-center justify-center
+    px-4 py-2
+    text-white
+    border border-white
+    rounded-full
+    transition-all ease-out duration-150
+    hover:bg-white hover:text-black hover:scale-105
+    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white;
   }
 }

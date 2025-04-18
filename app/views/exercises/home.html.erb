@@ -1,11 +1,19 @@
 <div class="h-full flex flex-col justify-center gap-4">
-  <div>
-    <%= logo %>
+  <div id="navbar" class="navbar">
+    <div class="navbar__item navbar__item--small"></div>
+    <div class="navbar__item">
+      <%= logo link_to: nil %>
+    </div>
+    <div class="navbar__item navbar__item--small"></div>
   </div>
 
   <div class="flex justify-center">
     <%= circle_button(class: "relative w-48 h-48 text-white") do %>
       <%= link_to "Take a breath", exercise_path(@exercise, autostart: true), class: "text-black absolute inset-0 flex justify-center items-center" %>
     <% end %>
+  </div>
+
+  <div class="flex justify-center">
+    <%= link_to "Explore", exercises_path, class: "button" %>
   </div>
 </div>

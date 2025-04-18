@@ -1,0 +1,24 @@
+<div id="exercises" class="min-h-full flex flex-col justify-top gap-6">
+  <div id="navbar" class="navbar">
+    <div class="navbar__item navbar__item--small">
+      <%= link_to "<", root_path, class: "button" %>
+    </div>
+    <div class="navbar__item">
+      <%= logo %>
+    </div>
+    <div class="navbar__item navbar__item--small"></div>
+  </div>
+
+  <div>
+    <%= form_for :search, url: exercises_path, method: :get do |f| %>
+      <%= f.text_field :query,
+        value: params.dig(:search, :query),
+        placeholder: "Search",
+        class: "w-full border border-white rounded-full px-4 py-2" %>
+    <% end %>
+  </div>
+
+  <div id="list" class="flex flex-col">
+    <%= render @exercises %>
+  </div>
+</div>

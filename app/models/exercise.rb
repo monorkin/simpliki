@@ -8,4 +8,10 @@ class Exercise < ApplicationRecord
   accepts_nested_attributes_for :steps, allow_destroy: true
 
   def self.random = order("RANDOM()").limit(1).first
+
+  def self.search(...) = all
+
+  def excerpt
+    description.to_plain_text.truncate(100)
+  end
 end
