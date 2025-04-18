@@ -4,7 +4,7 @@ module LogoHelper
   def logo(**options)
     options[:link_to] = root_path unless options.key?(:link_to)
 
-    content_tag(:h1, id: options.fetch(:id, "logo"), class: "logo") do
+    content_tag(:h1, id: options.fetch(:id, "logo"), class: "logo #{"logo--small" if options[:size] == :small}") do
       concat(content_tag(:span, "Simpl", class: "logo__text"))
       concat(content_tag(:ruby, class: "logo__kanji") do
         raw("息") + content_tag(:rt, "iki")

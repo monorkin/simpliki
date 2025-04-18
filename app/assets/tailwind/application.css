@@ -40,6 +40,14 @@ html {
     }
   }
 
+  .logo--small {
+    @apply text-4xl md:text-6xl mt-5;
+
+    .logo__text {
+      @apply pt-4 md:pt-6;
+    }
+  }
+
   .animated-circle {
     --name: animated-circle;
 
@@ -54,11 +62,15 @@ html {
     view-transition-name: var(--name, navbar);
 
     .navbar__item {
-      @apply text-white font-semibold text-lg;
+      @apply block relative text-white font-semibold text-lg pb-4;
+    }
+
+    .navbar__item.navbar__item--logo {
+      @apply pb-0;
     }
 
     .navbar__item.navbar__item--small {
-      @apply w-6 h-6;
+      @apply size-6;
     }
   }
 
@@ -89,7 +101,11 @@ html {
   }
 }
 
-/* Target the main container */
+.turbo-progress-bar {
+  background-color: white;
+}
+
+
 #exercises {
   view-transition-name: exercises;
 }
@@ -97,13 +113,3 @@ html {
 html[data-turbo-visit-direction="forward"]::view-transition-new(exercises) {
   animation: 0.25s ease-out slide-to-top-from-out-of-view both;
 }
-
-/* Target the list if you want it to animate separately */
-/* #exercises-list { */
-/*   view-transition-name: exercises-list; */
-/* } */
-/**/
-/* ::view-transition-new(exercises-list) { */
-/*   animation: 0.5s ease-out slide-to-top both; */
-/*   animation-delay: 0.1s; /* Slight delay for staggered effect */ */
-/* } */

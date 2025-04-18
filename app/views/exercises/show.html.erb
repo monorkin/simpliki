@@ -1,11 +1,11 @@
 <div id="<%= dom_id(@exercise) %>" class="h-screen overflow-y-scroll overflow-x-hidden snap-y snap-mandatory scrollbar-hidden">
-  <div id="exercise" class="h-[90vh] snap-start snap-always flex flex-col justify-between gap-4">
+  <div id="exercise" class="h-[85vh] snap-start snap-always flex flex-col justify-between gap-4">
     <div id="navbar" class="navbar">
       <div class="navbar__item navbar__item--small">
       <%= link_to back_chevron(class: "size-6"), :back, class: "button button--round" %>
       </div>
-      <div class="navbar__item">
-        <%= logo %>
+      <div class="navbar__item navbar__item--logo">
+        <%= logo(size: :small) %>
       </div>
       <div class="navbar__item navbar__item--small"></div>
     </div>
