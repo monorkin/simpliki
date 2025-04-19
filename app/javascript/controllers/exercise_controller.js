@@ -296,6 +296,6 @@ export default class extends Controller {
   }
 
   get hasMouse() {
-    return window.matchMedia("(hover: hover)").matches
+    return window.matchMedia("(hover: hover) and (pointer: fine)").matches
   }
 }
