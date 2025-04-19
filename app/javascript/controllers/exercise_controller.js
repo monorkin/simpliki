@@ -1,20 +1,35 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "minCircle", "maxCircle", "progressCircle", "overlay" ]
+  static targets = [
+    "minCircle",
+    "maxCircle",
+    "progressCircle",
+    "overlay",
+    "instruction",
+    "timer"
+  ]
   static values = {
     min: { type: Number, default: 0.25 },
     steps: { type: Array },
     autoStart: { type: Boolean, default: false },
   }
 
-  ANIMATION_SMOOTHING = "ease-out"
+  // ease-out is more satisfying but throws off pacing
+  // linear feels "artificial" or robotic but is better for pacing
+  ANIMATION_SMOOTHING = "linear"
+
   PREPARATION_MESSAGE = "Get ready..."
+  PREPARATION_DURATION = 3000
+  PREPARATION_SMOOTHING = "ease-out"
 
   connect() {
     this.running = false
     this.animations = []
+    this.preparationTimeout = null
     this.countdownInterval = null
+    this.timer = null
+    this.holdTimeout = null
 
     if (this.autoStartValue) {
       this.start()
@@ -30,79 +45,113 @@ export default class extends Controller {
   }
 
   start() {
-    const prepTime = 3000
-
     this.running = true
 
-    if (this.hasOverlayTarget) {
-      this.overlayTarget.textContent = this.PREPARATION_MESSAGE
-    }
+    this.originalOverlay = this.overlayTarget.innerHTML
+
+    this.instructionTarget.textContent = this.PREPARATION_MESSAGE
+    this.overlayTarget.textContent = ""
 
     const minCircleAnimation = this.minCircleTarget.animate([
       { transform: "scale(1)" },
       { transform: `scale(${this.minValue})` }
     ], {
-      duration: prepTime,
-      fill: "forwards",
-      easing: "ease-out"
+      duration: this.PREPARATION_DURATION,
+      easing: this.PREPARATION_SMOOTHING
     })
+
     this.animations.push(minCircleAnimation)
 
-    const progressCircleAnimation = this.progressCircleTarget.animate([
-      { transform: "scale(1)" },
-      { transform: `scale(${this.minValue})` }
-    ], {
-      duration: prepTime,
-      fill: "forwards",
-      easing: "ease-out"
-    })
-
-    this.animations.push(progressCircleAnimation)
-
-    minCircleAnimation.onfinish = () => {
+    let callback = () => {
       this.minCircleTarget.style.transform = `scale(${this.minValue})`
       this.animations = this.animations.filter(a => a !== minCircleAnimation)
     }
 
-    progressCircleAnimation.onfinish = () => {
-      this.progressCircleTarget.style.transform = `scale(${this.minValue})`
-      this.animations = this.animations.filter(a => a !== progressCircleAnimation)
+    minCircleAnimation.onfinish = callback
+    minCircleAnimation.oncancel = callback
+
+    if (this.stepsValue[0].action === "inhale") {
+      const progressCircleAnimation = this.progressCircleTarget.animate([
+        { transform: "scale(1)" },
+        { transform: `scale(${this.minValue})` }
+      ], {
+        duration: this.PREPARATION_DURATION,
+        easing: this.PREPARATION_SMOOTHING
+      })
+
+      this.animations.push(progressCircleAnimation)
+
+      let callback = () => {
+        this.progressCircleTarget.style.transform = `scale(${this.minValue})`
+        this.animations = this.animations.filter(a => a !== progressCircleAnimation)
+      }
+
+      progressCircleAnimation.onfinish = callback
+      progressCircleAnimation.oncancel = callback
     }
 
-    setTimeout(() => {
+    this.preparationTimeout = setTimeout(() => {
       this.#runAnimation()
-    }, prepTime)
+      this.#startTimer()
+    }, this.PREPARATION_DURATION)
   }
 
   stop() {
     this.running = false
 
+    if (this.preparationTimeout) {
+      clearTimeout(this.preparationTimeout)
+      this.preparationTimeout = null
+    }
+
+    if (this.holdTimeout) {
+      clearTimeout(this.holdTimeout)
+      this.holdTimeout = null
+    }
+
+    this.#stopTimer()
+
     this.animations.forEach(animation => {
-      if (animation) animation.cancel()
+      animation.cancel()
     })
     this.animations = []
+
+    setTimeout(() => {
+      this.minCircleTarget.style.removeProperty("transform")
+      this.progressCircleTarget.style.removeProperty("transform")
+    }, 0)
 
     if (this.countdownInterval) {
       clearInterval(this.countdownInterval)
       this.countdownInterval = null
     }
 
-    if (this.hasOverlayTarget) {
-      this.overlayTarget.textContent = ""
-    }
+    this.timerTarget.textContent = ""
+    this.instructionTarget.textContent = ""
+    this.overlayTarget.innerHTML = this.originalOverlay
+  }
 
-    this.minCircleTarget.style.setProperty("transform", "scale(1)")
-    this.progressCircleTarget.style.setProperty("transform", "scale(1)")
+  async #startTimer() {
+    this.timerTarget.textContent = "00:00"
+    this.startedAt = Date.now()
+    this.timer = setInterval(() => {
+      const elapsedTime = Date.now() - this.startedAt
+      const elapsedSeconds = Math.floor(elapsedTime / 1000)
+      const elapsedMinutes = Math.floor(elapsedSeconds / 60)
+      const timeString = `${elapsedMinutes.toString().padStart(2, "0")}:${(elapsedSeconds % 60).toString().padStart(2, "0")}`
+
+      this.timerTarget.textContent = timeString
+    }, 1000)
+  }
+
+  async #stopTimer() {
+    if (this.timer) clearInterval(this.timer)
+    this.timer = null
+    this.startedAt = null
   }
 
   async #runAnimation() {
-    if (!this.running) return
-
     let currentStepIndex = 0
-
-    if (!this.hasStepsValue || this.stepsValue.length === 0) {
-      return
-    }
 
     while (this.running) {
       const step = this.stepsValue[currentStepIndex]
@@ -135,14 +184,30 @@ export default class extends Controller {
         }
       }, 100)
 
+      if (step.action === "hold") {
+        if (this.holdTimeout) {
+          clearTimeout(this.holdTimeout)
+          this.holdTimeout = null
+        }
+
+        this.holdTimeout = setTimeout(() => {
+          if (this.countdownInterval) {
+            clearInterval(this.countdownInterval)
+            this.countdownInterval = null
+          }
+
+          resolve()
+        }, duration)
+
+        return
+      }
+
       let targetScale = null
 
       if (step.action === "inhale") {
         targetScale = 1
       } else if (step.action === "exhale") {
         targetScale = this.minValue
-      } else if (step.action === "hold") {
-        targetScale = parseFloat(this.progressCircleTarget.style.transform.replace(/[^0-9.]/g, '')) || 1
       } else {
         throw new Error(`Unknown action: ${step.action}`)
       }
@@ -152,8 +217,7 @@ export default class extends Controller {
         { transform: `scale(${targetScale})` }
       ], {
         duration: duration,
-        fill: "forwards",
-        easing: step.action === "hold" ? "linear" : this.ANIMATION_SMOOTHING
+        easing: this.ANIMATION_SMOOTHING
       })
 
       this.animations.push(animation)
@@ -184,8 +248,6 @@ export default class extends Controller {
   }
 
   #updateOverlayText(step, remainingTime) {
-    if (!this.hasOverlayTarget) return
-
     let actionText = ""
     switch (step.action) {
       case "inhale":
@@ -206,9 +268,15 @@ export default class extends Controller {
       orificeText = ` through your ${step.orifice}`
     }
 
-    this.overlayTarget.innerHTML = `
-      <div>${actionText}${orificeText}</div>
-      <div class="countdown">${remainingTime}</div>
-    `
+    const instructionText = `${actionText}${orificeText}`
+    const remainingTimeText = `${remainingTime}`
+
+    if (this.instructionTarget.textContent !== instructionText) {
+      this.instructionTarget.textContent = instructionText
+    }
+
+    if (this.overlayTarget.textContent !== remainingTimeText) {
+      this.overlayTarget.textContent = remainingTimeText
+    }
   }
 }
