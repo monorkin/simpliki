@@ -23,7 +23,7 @@ module CircleHelper
       content_tag(:div, class: "relative flex size-64") do
         circle_id = dom_id(exercise, :breath_guide)
 
-        content_tag(:div, "", class: "absolute inset-0 z-40 flex justify-center items-center cursor-pointer text-black font-bold text-xl", data: { action: "click->exercise#toggle", exercise_target: "overlay" }) +
+        content_tag(:div, "", class: "absolute inset-0 z-40 flex justify-center items-center cursor-pointer text-black text-xl", data: { action: "click->exercise#toggle", exercise_target: "overlay" }) +
         animated_circle(symbol: circle_id, class: "hidden") +
         animated_circle(use: circle_id, class: "absolute inset-0 z-30 w-full select-none transition-all duration-300", stroke: "black", stroke_width: 2, name: "exercise-circle-min", data: { exercise_target: "minCircle" }) +
         animated_circle(use: circle_id, class: "absolute inset-0 z-20 w-full select-none transition-all", data: { exercise_target: "progressCircle" }) +

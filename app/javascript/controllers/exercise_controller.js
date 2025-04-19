@@ -23,6 +23,9 @@ export default class extends Controller {
   PREPARATION_DURATION = 3000
   PREPARATION_SMOOTHING = "ease-out"
 
+  INITIAL_OVERLAY_TAP_MESSAGE = "Tap to start"
+  INITIAL_OVERLAY_MOUSE_MESSAGE = "Click to start"
+
   connect() {
     this.running = false
     this.animations = []
@@ -30,6 +33,8 @@ export default class extends Controller {
     this.countdownInterval = null
     this.timer = null
     this.holdTimeout = null
+
+    this.overlayTarget.textContent = this.initialOverlayMessage
 
     if (this.autoStartValue) {
       this.start()
@@ -46,8 +51,6 @@ export default class extends Controller {
 
   start() {
     this.running = true
-
-    this.originalOverlay = this.overlayTarget.innerHTML
 
     this.instructionTarget.textContent = this.PREPARATION_MESSAGE
     this.overlayTarget.textContent = ""
@@ -128,7 +131,7 @@ export default class extends Controller {
 
     this.timerTarget.textContent = ""
     this.instructionTarget.textContent = ""
-    this.overlayTarget.innerHTML = this.originalOverlay
+    this.overlayTarget.textContent = this.initialOverlayMessage
   }
 
   async #startTimer() {
@@ -278,5 +281,17 @@ export default class extends Controller {
     if (this.overlayTarget.textContent !== remainingTimeText) {
       this.overlayTarget.textContent = remainingTimeText
     }
+  }
+
+  get initialOverlayMessage() {
+    if (this.hasMouse) {
+      return this.INITIAL_OVERLAY_MOUSE_MESSAGE
+    } else {
+      return this.INITIAL_OVERLAY_TAP_MESSAGE
+    }
+  }
+
+  get hasMouse() {
+    return window.matchMedia("(hover: hover)").matches
   }
 }
