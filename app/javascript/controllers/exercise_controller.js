@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import SoundPlayer from "models/sound_player"
 
 export default class extends Controller {
   static targets = [
@@ -33,6 +34,7 @@ export default class extends Controller {
     this.countdownInterval = null
     this.timer = null
     this.holdTimeout = null
+    this.soundPlayer = new SoundPlayer()
 
     this.overlayTarget.textContent = this.initialOverlayMessage
 
@@ -105,6 +107,8 @@ export default class extends Controller {
 
   stop() {
     this.running = false
+
+    this.soundPlayer.stopCurrentSound()
 
     if (this.preparationTimeout) {
       clearTimeout(this.preparationTimeout)
@@ -229,7 +233,14 @@ export default class extends Controller {
 
       this.animations.push(animation)
 
+      if (step.action === "inhale") {
+        this.soundPlayer.playGongInhaleSound(duration)
+      } else if (step.action === "exhale") {
+        this.soundPlayer.playGongExhaleSound(duration)
+      }
+
       animation.onfinish = () => {
+        this.soundPlayer.stopCurrentSound()
         this.animations = this.animations.filter(a => a !== animation)
         this.progressCircleTarget.style.transform = `scale(${targetScale})`
 
@@ -242,6 +253,7 @@ export default class extends Controller {
       }
 
       animation.oncancel = () => {
+        this.soundPlayer.stopCurrentSound()
         this.animations = this.animations.filter(a => a !== animation)
 
         if (this.countdownInterval) {
