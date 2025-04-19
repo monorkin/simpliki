@@ -12,7 +12,7 @@ export default class extends Controller {
   static values = {
     min: { type: Number, default: 0.25 },
     steps: { type: Array },
-    autoStart: { type: Boolean, default: false },
+    autostart: { type: Boolean, default: false },
   }
 
   // ease-out is more satisfying but throws off pacing
@@ -36,9 +36,13 @@ export default class extends Controller {
 
     this.overlayTarget.textContent = this.initialOverlayMessage
 
-    if (this.autoStartValue) {
+    if (this.autostartValue) {
       this.start()
     }
+  }
+
+  disconnect() {
+    this.stop()
   }
 
   toggle() {
