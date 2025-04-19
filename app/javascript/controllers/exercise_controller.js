@@ -204,7 +204,11 @@ export default class extends Controller {
           this.holdTimeout = null
         }
 
+        this.soundPlayer.playHoldSound(duration)
+
         this.holdTimeout = setTimeout(() => {
+          this.soundPlayer.stopCurrentSound()
+
           if (this.countdownInterval) {
             clearInterval(this.countdownInterval)
             this.countdownInterval = null
