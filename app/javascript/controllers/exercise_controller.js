@@ -8,9 +8,13 @@ export default class extends Controller {
     autoStart: { type: Boolean, default: false },
   }
 
+  ANIMATION_SMOOTHING = "ease-out"
+  PREPARATION_MESSAGE = "Get ready..."
+
   connect() {
     this.running = false
     this.animations = []
+    this.countdownInterval = null
 
     if (this.autoStartValue) {
       this.start()
@@ -29,6 +33,10 @@ export default class extends Controller {
     const prepTime = 3000
 
     this.running = true
+
+    if (this.hasOverlayTarget) {
+      this.overlayTarget.textContent = this.PREPARATION_MESSAGE
+    }
 
     const minCircleAnimation = this.minCircleTarget.animate([
       { transform: "scale(1)" },
@@ -74,6 +82,15 @@ export default class extends Controller {
     })
     this.animations = []
 
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval)
+      this.countdownInterval = null
+    }
+
+    if (this.hasOverlayTarget) {
+      this.overlayTarget.textContent = ""
+    }
+
     this.minCircleTarget.style.setProperty("transform", "scale(1)")
     this.progressCircleTarget.style.setProperty("transform", "scale(1)")
   }
@@ -97,13 +114,33 @@ export default class extends Controller {
   async #animateStep(step) {
     return new Promise(resolve => {
       const duration = step.duration * 1000
+      const startTime = Date.now()
+      let remainingTime = step.duration
+
+      this.#updateOverlayText(step, remainingTime)
+
+      if (this.countdownInterval) {
+        clearInterval(this.countdownInterval)
+      }
+
+      this.countdownInterval = setInterval(() => {
+        const elapsedMs = Date.now() - startTime
+        remainingTime = Math.max(0, step.duration - Math.floor(elapsedMs / 1000))
+
+        this.#updateOverlayText(step, remainingTime)
+
+        if (remainingTime <= 0 || !this.running) {
+          clearInterval(this.countdownInterval)
+          this.countdownInterval = null
+        }
+      }, 100)
 
       let targetScale = null
 
       if (step.action === "inhale") {
-        targetScale = 1 // Expand to full size
+        targetScale = 1
       } else if (step.action === "exhale") {
-        targetScale = this.minValue // Contract to minimum size
+        targetScale = this.minValue
       } else if (step.action === "hold") {
         targetScale = parseFloat(this.progressCircleTarget.style.transform.replace(/[^0-9.]/g, '')) || 1
       } else {
@@ -116,7 +153,7 @@ export default class extends Controller {
       ], {
         duration: duration,
         fill: "forwards",
-        easing: step.action === "hold" ? "linear" : "ease-out"
+        easing: step.action === "hold" ? "linear" : this.ANIMATION_SMOOTHING
       })
 
       this.animations.push(animation)
@@ -124,13 +161,54 @@ export default class extends Controller {
       animation.onfinish = () => {
         this.animations = this.animations.filter(a => a !== animation)
         this.progressCircleTarget.style.transform = `scale(${targetScale})`
+
+        if (this.countdownInterval) {
+          clearInterval(this.countdownInterval)
+          this.countdownInterval = null
+        }
+
         resolve()
       }
 
       animation.oncancel = () => {
         this.animations = this.animations.filter(a => a !== animation)
+
+        if (this.countdownInterval) {
+          clearInterval(this.countdownInterval)
+          this.countdownInterval = null
+        }
+
         resolve()
       }
     })
+  }
+
+  #updateOverlayText(step, remainingTime) {
+    if (!this.hasOverlayTarget) return
+
+    let actionText = ""
+    switch (step.action) {
+      case "inhale":
+        actionText = "Breathe In"
+        break
+      case "exhale":
+        actionText = "Breathe Out"
+        break
+      case "hold":
+        actionText = "Hold"
+        break
+      default:
+        actionText = step.action
+    }
+
+    let orificeText = ""
+    if (step.orifice && step.orifice !== "none") {
+      orificeText = ` through your ${step.orifice}`
+    }
+
+    this.overlayTarget.innerHTML = `
+      <div>${actionText}${orificeText}</div>
+      <div class="countdown">${remainingTime}</div>
+    `
   }
 }
