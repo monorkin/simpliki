@@ -234,9 +234,9 @@ export default class extends Controller {
       this.animations.push(animation)
 
       if (step.action === "inhale") {
-        this.soundPlayer.playGongInhaleSound(duration)
+        this.soundPlayer.playInhaleSound(duration)
       } else if (step.action === "exhale") {
-        this.soundPlayer.playGongExhaleSound(duration)
+        this.soundPlayer.playExhaleSound(duration)
       }
 
       animation.onfinish = () => {
