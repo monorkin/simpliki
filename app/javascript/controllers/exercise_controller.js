@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import SoundPlayer from "models/sound_player"
+import Vibrator from "models/vibrator"
 
 export default class extends Controller {
   static targets = [
@@ -35,6 +36,7 @@ export default class extends Controller {
     this.timer = null
     this.holdTimeout = null
     this.soundPlayer = new SoundPlayer()
+    this.vibrator = new Vibrator()
 
     this.overlayTarget.textContent = this.initialOverlayMessage
 
@@ -109,6 +111,7 @@ export default class extends Controller {
     this.running = false
 
     this.soundPlayer.stopCurrentSound()
+    this.vibrator.stop()
 
     if (this.preparationTimeout) {
       clearTimeout(this.preparationTimeout)
@@ -235,8 +238,10 @@ export default class extends Controller {
 
       if (step.action === "inhale") {
         this.soundPlayer.playInhaleSound(duration)
+        this.vibrator.inhale(duration)
       } else if (step.action === "exhale") {
         this.soundPlayer.playExhaleSound(duration)
+        this.vibrator.exhale(duration)
       }
 
       animation.onfinish = () => {
