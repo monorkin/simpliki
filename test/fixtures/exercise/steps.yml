@@ -46,3 +46,73 @@ box_breathing_4:
   action: exhale
   position: 3
   duration: 8
+
+coherent_breathing_1:
+  exercise: coherent_breathing
+  orifice: nose
+  action: inhale
+  position: 1
+  duration: 5
+
+coherent_breathing_2:
+  exercise: coherent_breathing
+  orifice: nose
+  action: exhale
+  position: 2
+  duration: 5
+
+equal_breathing_short_1:
+  exercise: equal_breathing_short
+  orifice: nose
+  action: inhale
+  position: 1
+  duration: 4
+
+equal_breathing_short_2:
+  exercise: equal_breathing_short
+  orifice: nose
+  action: exhale
+  position: 2
+  duration: 4
+
+equal_breathing_medium_1:
+  exercise: equal_breathing_medium
+  orifice: nose
+  action: inhale
+  position: 1
+  duration: 6
+
+equal_breathing_medium_2:
+  exercise: equal_breathing_medium
+  orifice: nose
+  action: exhale
+  position: 2
+  duration: 6
+
+equal_breathing_long_1:
+  exercise: equal_breathing_long
+  orifice: nose
+  action: inhale
+  position: 1
+  duration: 8
+
+equal_breathing_long_2:
+  exercise: equal_breathing_long
+  orifice: nose
+  action: exhale
+  position: 2
+  duration: 8
+
+pursed_lip_breathing_1:
+  exercise: pursed_lip_breathing
+  orifice: nose
+  action: inhale
+  position: 1
+  duration: 4
+
+pursed_lip_breathing_2:
+  exercise: pursed_lip_breathing
+  orifice: outh
+  action: exhale
+  position: 2
+  duration: 8

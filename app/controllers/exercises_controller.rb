@@ -8,8 +8,10 @@ class ExercisesController < ApplicationController
   end
 
   def index
-    @exercises = Exercise.search(params.dig(:search, :query))
-    set_page_and_extract_portion_from @exercises, ordered_by: { name: :desc, id: :desc }
+    exercises = Exercise.search(params.dig(:search, :query))
+    set_page_and_extract_portion_from exercises,
+      ordered_by: { name: :desc, id: :desc },
+      per_page: [ 3, 5, 5, 10 ]
   end
 
   def show

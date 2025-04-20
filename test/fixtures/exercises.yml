@@ -3,3 +3,18 @@ box_breathing:
 
 4_7_8_breathing:
   name: 4-7-8 Breathing
+
+coherent_breathing:
+  name: Coherent Breathing
+
+equal_breathing_short:
+  name: Equal Breathing - Short
+
+equal_breathing_medium:
+  name: Equal Breathing - Medium
+
+equal_breathing_long:
+  name: Equal Breathing - Long
+
+pursed_lip_breathing:
+  name: Pursed-Lip Breathing

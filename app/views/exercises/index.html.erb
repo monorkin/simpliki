@@ -1,4 +1,4 @@
-<div id="exercises" class="min-h-full flex flex-col justify-top gap-6">
+<div id="exercises" class="min-h-full flex flex-col justify-top gap-6" data-controller="pagination" data-pagination-loading-message-value="Give me a moment..." data-pagination-loading-class="button--loading">
   <div id="navbar" class="navbar">
     <div class="navbar__item navbar__item--small">
       <%= link_to back_chevron(class: "size-6"), root_path, class: "button button--round" %>
@@ -18,7 +18,20 @@
     <% end %>
   </div>
 
-  <div id="exercises-list" class="flex flex-col">
-    <%= render @exercises %>
+  <div id="exercises-list" class="flex flex-col" data-pagination-target="list">
+    <%= render @page.records %>
+  </div>
+
+  <div id="pagination" class="flex justify-center">
+    <% unless @page.last? || @page.only? %>
+      <%= link_to "Show more",
+        exercises_path(page: @page.next_param),
+        class: "button",
+        data: {
+          turbo_prefetch: false,
+          pagination_target: "nextPageLink",
+          action: "pagination#loadNextPage"
+        } %>
+    <% end %>
   </div>
 </div>

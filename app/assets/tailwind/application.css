@@ -88,6 +88,10 @@ html {
   .button--round {
     @apply rounded-full p-2.5;
   }
+
+  .button--loading {
+    @apply animate-pulse select-none cursor-progress;
+  }
 }
 
 @keyframes slide-to-top-from-out-of-view {

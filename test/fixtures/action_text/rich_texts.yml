@@ -53,3 +53,145 @@ box_breathing:
       triggering the relaxation response, making it an excellent tool for quickly
       achieving a state of calm even in challenging situations.
     </p>
+
+coherent_breathing:
+  record: coherent_breathing (Exercise)
+  name: description
+  body: |
+    <p>
+      <b>Coherent breathing</b> is a scientifically validated breathing technique that involves 
+      inhaling and exhaling at a steady rate of about 5 breaths per minute.
+    </p>
+    <p>
+      This deliberate rhythm—typically breathing in for about 5-6 seconds and breathing out for 
+      the same duration—helps synchronize your heart rate, blood pressure, and autonomic nervous 
+      system functions. The practice creates what scientists call "respiratory sinus arrhythmia," 
+      a healthy pattern where heart rate increases slightly during inhalation and decreases during 
+      exhalation, leading to improved heart rate variability.
+    </p>
+    <p>
+      The benefits of coherent breathing are extensive and well-documented. Regular practice 
+      has been shown to reduce stress and anxiety, lower blood pressure, improve immune function, 
+      enhance cognitive performance, and promote emotional regulation. Coherent breathing is 
+      particularly valuable for managing chronic stress conditions and has been incorporated into 
+      various therapeutic protocols. It serves as an excellent bridge between mindfulness and 
+      physiological regulation, as its steady rhythm makes it easy to maintain focus while 
+      simultaneously balancing the autonomic nervous system. Many practitioners find that just 
+      five minutes of coherent breathing can produce noticeable shifts in mental clarity and 
+      physical tension, making it an efficient tool for daily stress management.
+    </p>
+
+equal_breathing_short:
+  record: equal_breathing_short (Exercise)
+  name: description
+  body: |
+    <p>
+      <b>Equal breathing</b>, also known as "Sama Vritti" in Sanskrit, is a foundational 
+      yogic breathing technique that emphasizes matching the length of your inhalation 
+      to your exhalation.
+    </p>
+    <p>
+      The practice typically begins with counting to four for both inhalation and exhalation, 
+      though practitioners may gradually extend this count to six or eight as their lung capacity 
+      and control improve. Unlike some other breathing techniques, equal breathing maintains the 
+      same duration for both breath phases, creating a balanced, harmonious rhythm that reflects 
+      its Sanskrit name meaning "equal movement."
+    </p>
+    <p>
+      Equal breathing offers significant benefits for both mind and body. By creating symmetry in 
+      the breathing pattern, it helps establish a sense of balance in the nervous system, reducing 
+      stress and anxiety while promoting mental clarity and focus. The technique is particularly 
+      effective for calming racing thoughts, managing emotional reactivity, and preparing the mind 
+      for meditation or sleep. Its simplicity makes it accessible to beginners, while its versatility 
+      allows it to be practiced anywhere—during a commute, before an important meeting, or while 
+      lying in bed. Many practitioners appreciate equal breathing because it provides a gentle 
+      entry point into more advanced breathing techniques while still offering immediate calming 
+      effects. For those new to breathwork, equal breathing serves as an excellent foundation for 
+      developing greater respiratory awareness and control.
+    </p>
+
+equal_breathing_medium:
+  record: equal_breathing_medium (Exercise)
+  name: description
+  body: |
+    <p>
+      <b>Equal breathing</b>, also known as "Sama Vritti" in Sanskrit, is a foundational 
+      yogic breathing technique that emphasizes matching the length of your inhalation 
+      to your exhalation.
+    </p>
+    <p>
+      The practice typically begins with counting to four for both inhalation and exhalation, 
+      though practitioners may gradually extend this count to six or eight as their lung capacity 
+      and control improve. Unlike some other breathing techniques, equal breathing maintains the 
+      same duration for both breath phases, creating a balanced, harmonious rhythm that reflects 
+      its Sanskrit name meaning "equal movement."
+    </p>
+    <p>
+      Equal breathing offers significant benefits for both mind and body. By creating symmetry in 
+      the breathing pattern, it helps establish a sense of balance in the nervous system, reducing 
+      stress and anxiety while promoting mental clarity and focus. The technique is particularly 
+      effective for calming racing thoughts, managing emotional reactivity, and preparing the mind 
+      for meditation or sleep. Its simplicity makes it accessible to beginners, while its versatility 
+      allows it to be practiced anywhere—during a commute, before an important meeting, or while 
+      lying in bed. Many practitioners appreciate equal breathing because it provides a gentle 
+      entry point into more advanced breathing techniques while still offering immediate calming 
+      effects. For those new to breathwork, equal breathing serves as an excellent foundation for 
+      developing greater respiratory awareness and control.
+    </p>
+
+equal_breathing_long:
+  record: equal_breathing_long (Exercise)
+  name: description
+  body: |
+    <p>
+      <b>Equal breathing</b>, also known as "Sama Vritti" in Sanskrit, is a foundational 
+      yogic breathing technique that emphasizes matching the length of your inhalation 
+      to your exhalation.
+    </p>
+    <p>
+      The practice typically begins with counting to four for both inhalation and exhalation, 
+      though practitioners may gradually extend this count to six or eight as their lung capacity 
+      and control improve. Unlike some other breathing techniques, equal breathing maintains the 
+      same duration for both breath phases, creating a balanced, harmonious rhythm that reflects 
+      its Sanskrit name meaning "equal movement."
+    </p>
+    <p>
+      Equal breathing offers significant benefits for both mind and body. By creating symmetry in 
+      the breathing pattern, it helps establish a sense of balance in the nervous system, reducing 
+      stress and anxiety while promoting mental clarity and focus. The technique is particularly 
+      effective for calming racing thoughts, managing emotional reactivity, and preparing the mind 
+      for meditation or sleep. Its simplicity makes it accessible to beginners, while its versatility 
+      allows it to be practiced anywhere—during a commute, before an important meeting, or while 
+      lying in bed. Many practitioners appreciate equal breathing because it provides a gentle 
+      entry point into more advanced breathing techniques while still offering immediate calming 
+      effects. For those new to breathwork, equal breathing serves as an excellent foundation for 
+      developing greater respiratory awareness and control.
+    </p>
+
+pursed_lip_breathing:
+  record: pursed_lip_breathing (Exercise)
+  name: description
+  body: |
+    <p>
+      <b>Pursed lip breathing</b> is a simple yet effective breathing technique that involves 
+      inhaling through the nose and exhaling slowly through pursed lips, as if gently blowing 
+      through a straw.
+    </p>
+    <p>
+      The practice typically follows a 2:4 ratio—inhaling through the nose for 2 counts, then 
+      exhaling through pursed lips for 4 counts. This controlled exhalation creates slight back 
+      pressure in the airways, helping them stay open longer and allowing more complete exhalation. 
+      By slowing the breathing rate and promoting full exhalation, pursed lip breathing helps 
+      release trapped air from the lungs.
+    </p>
+    <p>
+      Pursed lip breathing offers significant benefits, particularly for those with respiratory 
+      conditions like COPD, asthma, or emphysema. The technique helps reduce shortness of breath, 
+      improves ventilation, increases oxygen levels, and decreases the work of breathing. Beyond 
+      respiratory support, regular practice can reduce anxiety, promote relaxation, and provide 
+      a practical tool for managing breathlessness during physical activity or periods of stress. 
+      Healthcare professionals often recommend pursed lip breathing as a self-management strategy 
+      because it's easy to learn, requires no equipment, and can be practiced anywhere. Many 
+      people find that incorporating just a few minutes of pursed lip breathing into their daily 
+      routine can significantly improve their breathing efficiency and overall sense of well-being.
+    </p>
