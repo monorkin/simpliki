@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1024"
+   height="1024"
+   viewBox="0 0 270.93333 270.93333"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.1 (93de688d07, 2025-03-30)"
+   sodipodi:docname="icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#000000"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:export-bgcolor="#ffffff00"
+     inkscape:zoom="0.5683642"
+     inkscape:cx="396.75265"
+     inkscape:cy="561.25984"
+     inkscape:window-width="1440"
+     inkscape:window-height="891"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       fill="currentColor"
+       stroke="none"
+       stroke-width="0"
+       data-circle-animation-target="path"
+       d="m 231.80126,135.90323 c 0.0827,13.447 -2.17694,24.35392 -6.62214,36.58604 -5.06389,12.32352 -11.42012,21.76399 -20.37309,31.36735 -9.35239,9.35707 -18.97,15.7791 -31.05536,21.1264 -12.17408,5.02251 -23.62835,7.32119 -36.89803,7.53495 -13.13252,-0.0318 -24.66839,-2.29176 -37.036697,-7.20022 -12.087096,-5.05385 -21.938285,-11.58018 -31.558241,-20.8196 -9.191751,-9.27548 -15.855959,-19.13531 -21.329068,-31.34717 -4.898297,-12.03885 -7.329001,-23.81183 -7.798751,-37.24775 0.10852,-12.92341 2.368141,-24.87748 7.117431,-37.529922 5.042848,-11.828348 11.75535,-22.129065 21.149254,-31.926113 9.172338,-8.969866 19.357218,-15.959127 31.937147,-21.122635 11.934015,-4.801975 23.954105,-7.335033 37.518925,-6.850444 12.97883,0.08812 24.82207,2.347909 36.89066,8.367217 12.16368,5.05708 21.88177,11.528272 30.34516,21.826083 9.54195,9.43833 15.69316,18.785129 19.35472,31.368844 5.38867,12.57285 7.29819,23.08752 8.35808,35.86697"
+       id="path1"
+       style="fill:#ffffff;fill-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-size:150.794px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:12.5661"
+       x="59.617332"
+       y="193.97475"
+       id="text2"><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:12.5661"
+         x="59.617332"
+         y="193.97475"
+         id="tspan3">息</tspan></text>
+  </g>
+</svg>
