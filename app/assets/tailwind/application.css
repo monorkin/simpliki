@@ -109,11 +109,10 @@ html {
   background-color: white;
 }
 
-
 #exercises {
   view-transition-name: exercises;
 }
 
-html[data-turbo-visit-direction="forward"]::view-transition-new(exercises) {
+html:not([data-same-page-visit])[data-turbo-visit-direction="forward"]::view-transition-new(exercises) {
   animation: 0.25s ease-out slide-to-top-from-out-of-view both;
 }

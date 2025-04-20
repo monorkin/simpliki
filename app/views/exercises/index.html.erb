@@ -19,7 +19,11 @@
   </div>
 
   <div id="exercises-list" class="flex flex-col" data-pagination-target="list">
-    <%= render @page.records %>
+    <% if @page.empty? %>
+      <div class="text-center">There is no such exercise</div>
+    <% else %>
+      <%= render @page.records %>
+    <% end %>
   </div>
 
   <div id="pagination" class="flex justify-center">
