@@ -25,7 +25,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new(exercise_params)
 
     if @exercise.save
-      redirect_to action: :show, status: :see_other, flush: { notice: "Added" }
+      redirect_to action: :show, id: @exercise.id, status: :see_other, flush: { notice: "Added" }
     else
       render :new, status: :unprocessable_entity
     end
@@ -62,6 +62,7 @@ class ExercisesController < ApplicationController
           :action,
           :duration,
           :id,
+          :orifice,
           :position
         ]
       )
