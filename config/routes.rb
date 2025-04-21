@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   root "exercises#home"
 
   resources :exercises
+
+  resource :session
+  resources :passwords, param: :token
 end

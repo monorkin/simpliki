@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ExercisesController < ApplicationController
+  allow_unauthenticated_access only: %i[ home show index ]
   before_action :set_exercise, only: %i[ show edit update destroy ]
 
   def home
@@ -55,9 +56,13 @@ class ExercisesController < ApplicationController
     def exercise_params
       params.require(:exercise).permit(
         :name,
+        :description,
         steps_attributes: [
-          :position,
-          :action
+          :_destroy,
+          :action,
+          :duration,
+          :id,
+          :position
         ]
       )
     end

@@ -1,4 +1,4 @@
-<div id="<%= dom_id(exercise) %>" class="relative border border-white border-t-0 first:border-t first:rounded-t-md last:rounded-b-md px-6 py-4">
+<div id="<%= dom_id(exercise) %>" class="relative border border-white border-t-0 first:border-t first:rounded-t-md last:rounded-b-md px-6 py-4 focus:ring-0">
   <h2 class="font-semibold text-xl"><%= exercise.name %></h2>
   <p class="truncate text-sm text-gray-300"><%= exercise.excerpt %></p>
   <%= link_to "", exercise, class: "absolute inset-0" %>

@@ -1,0 +1,15 @@
+<div id="<%= dom_id(@exercise, :edit) %>" class="min-h-full flex flex-col justify-top gap-6" data-controller="pagination" data-pagination-loading-message-value="Just a moment..." data-pagination-loading-class="button--loading">
+  <div id="navbar" class="navbar">
+    <div class="navbar__item navbar__item--small">
+      <%= link_to back_chevron(class: "size-6"), exercise_path(@exercise), class: "button button--round" %>
+    </div>
+    <div class="navbar__item navbar__item--logo">
+      <%= logo(size: :small) %>
+    </div>
+    <div class="navbar__item navbar__item--small"></div>
+  </div>
+
+  <%= render partial: "form", locals: { exercise: @exercise } %>
+
+  <%= footer %>
+</div>

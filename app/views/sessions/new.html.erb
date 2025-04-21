@@ -1,0 +1,54 @@
+<div id="exercises" class="min-h-full flex flex-col justify-top gap-6" data-controller="pagination" data-pagination-loading-message-value="Just a moment..." data-pagination-loading-class="button--loading">
+  <div id="navbar" class="navbar">
+    <div class="navbar__item navbar__item--small">
+      <%= link_to back_chevron(class: "size-6"), root_path, class: "button button--round" %>
+    </div>
+    <div class="navbar__item navbar__item--logo">
+      <%= logo(size: :small) %>
+    </div>
+    <div class="navbar__item navbar__item--small"></div>
+  </div>
+
+  <div class="mt-6 mx-auto md:w-2/3 w-full">
+    <% if alert = flash[:alert] %>
+      <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+    <% end %>
+
+    <% if notice = flash[:notice] %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <h1 class="text-center font-bold text-4xl">Sign in</h1>
+
+    <%= form_with url: session_url, class: "contents" do |form| %>
+      <div class="my-5">
+        <%= form.email_field :email_address, 
+          required: true,
+          autofocus: true,
+          autocomplete: "username",
+          placeholder: "Enter your email address", 
+          value: params[:email_address], 
+          class: "input" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.password_field :password,
+          required: true,
+          autocomplete: "current-password",
+          placeholder: "Enter your password",
+          maxlength: 72,
+          class: "input" %>
+      </div>
+
+      <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+        <div class="inline">
+          <%= form.submit "Sign in", class: "button" %>
+        </div>
+
+        <div class="mt-4 text-sm text-gray-500 sm:mt-0">
+          <%= link_to "Forgot password?", new_password_path, class: "link link--muted" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

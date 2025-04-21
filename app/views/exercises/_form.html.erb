@@ -1,0 +1,32 @@
+<%= form_for exercise, html: { class: "form" } do |form| %>
+  <div class="input-group">
+    <%= form.text_field :name, class: "input" %>
+  </div>
+
+  <div class="input-group">
+    <%= form.rich_text_area :description %>
+  </div>
+
+  <div class="input-group" data-controller="nested-form">
+    <div class="flex flex-row gap-6 justify-between">
+      <h3 class="font-semibold text-lg flex-grow">Steps</h3>
+      <button class="button button--small flex-shrink-0" data-action="nested-form#addRecord:prevent">Add step</button>
+    </div>
+
+    <div class="flex flex-col my-3" data-nested-form-target="container">
+      <%= form.fields_for :steps, form.object.steps.ordered do |step_form| %>
+        <%= render partial: "step_form", locals: { form: step_form } %>
+      <% end %>
+    </div>
+
+    <template data-nested-form-target="template">
+      <%= form.fields_for :steps, form.object.steps.new, child_index: "NEW_RECORD" do |step_form| %>
+        <%= render partial: "step_form", locals: { form: step_form } %>
+      <% end %>
+    </template>
+  </div>
+
+  <div class="flex justify-end">
+    <%= form.submit "Save", class: "button" %>
+  </div>
+<% end %>

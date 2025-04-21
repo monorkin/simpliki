@@ -1,4 +1,4 @@
-<div id="exercises" class="min-h-full flex flex-col justify-top gap-6" data-controller="pagination" data-pagination-loading-message-value="Give me a moment..." data-pagination-loading-class="button--loading">
+<div id="exercises" class="min-h-full flex flex-col justify-top gap-6" data-controller="pagination" data-pagination-loading-message-value="Just a moment..." data-pagination-loading-class="button--loading">
   <div id="navbar" class="navbar">
     <div class="navbar__item navbar__item--small">
       <%= link_to back_chevron(class: "size-6"), root_path, class: "button button--round" %>
@@ -9,12 +9,17 @@
     <div class="navbar__item navbar__item--small"></div>
   </div>
 
-  <div>
-    <%= form_for :search, url: exercises_path, method: :get do |f| %>
+  <div class="flex flex-row justify-between gap-6">
+    <%= form_for :search, url: exercises_path, method: :get, class: "flex-grow" do |f| %>
       <%= f.text_field :query,
         value: params.dig(:search, :query),
         placeholder: "Search",
-        class: "w-full border border-white rounded-full px-4 py-2" %>
+        class: "input" %>
+    <% end %>
+    <% if authenticated? %>
+      <div id="actions" class="flex flex-row gap-2 flex-shrink-0">
+        <%= link_to "Create Exercise", new_exercise_path, class: "button" %>
+      </div>
     <% end %>
   </div>
 
@@ -38,4 +43,6 @@
         } %>
     <% end %>
   </div>
+
+  <%= footer %>
 </div>

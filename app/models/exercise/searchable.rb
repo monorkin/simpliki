@@ -8,7 +8,7 @@ class Exercise
     VECTOR_TABLE_NAME = FullTextSearchVector.table_name
 
     included do
-      has_one :full_text_search_vector, foreign_key: :rowid
+      has_one :full_text_search_vector, foreign_key: :rowid, dependent: :destroy
 
       after_save :create_or_update_full_text_search_vector
     end

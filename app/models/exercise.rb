@@ -5,9 +5,9 @@ class Exercise < ApplicationRecord
 
   has_rich_text :description
 
-  has_many :steps, inverse_of: :exercise
+  has_many :steps, inverse_of: :exercise, dependent: :destroy
 
-  accepts_nested_attributes_for :steps, allow_destroy: true
+  accepts_nested_attributes_for :steps, allow_destroy: true, reject_if: :all_blank
 
   def self.random = order("RANDOM()").limit(1).first
 

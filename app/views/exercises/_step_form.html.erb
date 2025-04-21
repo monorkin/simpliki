@@ -1,0 +1,30 @@
+<div <% if form.object.id %>id="<%= dom_id(form.object) %>"<% end %> class="flex flex-row justify-between gap-6 px-2 py-3 border border-white first-of-type:rounded-t-lg last-of-type:rounded-b-lg" data-nested-form-target="record" data-persisted="<%= form.object.persisted? %>">
+  <div class="flex-grow">
+    <%= form.hidden_field :id %>
+    <%= form.hidden_field :position %>
+
+    <div class="input-group input-group--horizontal">
+      <label>
+        Position
+        <%= form.number_field :position, class: "input", placeholder: "Position", min: 0, step: 1 %>
+      </label>
+      <label>
+        Action
+        <%= form.collection_select :action, Exercise::Step.actions, :first, :last, {}, { class: "input" } %>
+      </label>
+      <label>
+        Orifice
+        <%= form.collection_select :orifice, Exercise::Step.orifices, :first, :last, {}, { class: "input" } %>
+      </label>
+      <label>
+        Duration
+        <%= form.number_field :duration, class: "input", placeholder: "Duration", min: 0, step: 1 %>
+      </label>
+    </div>
+  </div>
+
+  <div class="flex-shrink-0 flex flex-row items-center">
+    <%= form.hidden_field :_destroy %>
+    <button class="button button--small" data-action="nested-form#removeRecord:prevent">Remove</button>
+  </div>
+</div>
