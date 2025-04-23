@@ -33,7 +33,8 @@ module ApplicationHelper
 
   def footer
     content_tag(:footer, class: "flex flex-row justify-center gap-4") do
-      # concat(link_to "About", "#", class: "link link--muted")
+      concat(link_to "About", "https://stanko.io/building-simpl-77CAzym51p5a", class: "link link--muted")
+      concat(link_to "Source-code", "https://github.com/monorkin/simpliki", class: "link link--muted")
 
       if authenticated?
         concat(button_to "Logout", session_path, class: "link link--muted")
